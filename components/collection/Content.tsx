@@ -1,4 +1,3 @@
-import FeaturedProduct from "../product/FeaturedProduct";
 import ProductListing from "../product/ProductListing";
 
 import Information from "../home/Information";
@@ -15,11 +14,10 @@ export default function Content() {
           nieuw’ Air modellen zijn tweedehands of open doos. Deze zijn amper van
           nieuw te onderscheiden en vaak enkele weken tot maanden oud.
         </p>
-        <Link className="font-medium text-gray-700 underline">
+        <Link className="font-medium text-gray-700 underline" href="">
           Verder lezen
         </Link>
       </div>
-      <FeaturedProduct />
       <ProductListing
         productImage="https://cdn.shopify.com/s/files/1/0878/4684/6800/files/macbook-air-13-midnight-2022-1_2x-1_jpg.webp?v=1739989640"
         productTitle="MacBook Air 15 inch M2 8GB 256GB SSD "

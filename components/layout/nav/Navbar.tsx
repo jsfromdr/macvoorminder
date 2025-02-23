@@ -1,4 +1,4 @@
-import { Darkmode, NavbarLink } from "@/lib/types";
+import { NavbarLink } from "@/lib/types";
 
 import {
   ChevronDownIcon,
@@ -14,7 +14,7 @@ import Link from "next/link";
 const menudata = await getHeaderMenu();
 const { menu } = menudata;
 
-export default async function Navbar({ dark }: { dark: Darkmode }) {
+export default async function Navbar({ dark }: { dark: boolean }) {
   return (
     <header
       className={`absolute left-0 right-0 top-0 flex items-center justify-between px-4 ${dark}`}
@@ -36,25 +36,25 @@ export default async function Navbar({ dark }: { dark: Darkmode }) {
 function HeaderMenuWhite() {
   return (
     <ul className="relative flex items-center gap-8">
-      {menu.items.map((node) => (
-        <li
-          key={node.key}
-          className="group relative h-fit w-fit cursor-pointer border-t-[6px] border-t-transparent py-6 font-medium text-white transition-all duration-300 hover:-translate-y-[2px] hover:border-t-green-600"
-        >
-          <Link href={node.url}>{node.title}</Link>
-          {node.items && node.items.length > 0 && (
-            <ul className="absolute left-0 top-14 mt-2 hidden h-fit w-fit translate-y-2 transform flex-col overflow-hidden rounded bg-white text-black shadow-md transition-all duration-150 group-hover:flex">
-              {node.items.map((child) => (
-                <li key={child.id} className="p-4 hover:bg-gray-100">
-                  <Link className="text-nowrap" href={child.url}>
-                    {child.title}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          )}
-        </li>
-      ))}
+{menu.items.map((node: NavbarLink) => (
+  <li
+    key={node.key}
+    className="group relative h-fit w-fit cursor-pointer border-t-[6px] border-t-transparent py-6 font-medium text-white transition-all duration-300 hover:-translate-y-[2px] hover:border-t-green-600"
+  >
+    <Link href={node.url}>{node.title}</Link>
+    {node.items && node.items.length > 0 && (
+      <ul className="absolute left-0 top-14 mt-2 hidden h-fit w-fit translate-y-2 transform flex-col overflow-hidden rounded bg-white text-black shadow-md transition-all duration-150 group-hover:flex">
+        {node.items.map((child: NavbarLink) => (
+          <li key={child.id} className="p-4 hover:bg-gray-100">
+            <Link className="text-nowrap" href={child.url}>
+              {child.title}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    )}
+  </li>
+))}
     </ul>
   );
 }
@@ -82,7 +82,7 @@ function HeaderMenuBlack() {
  * Account
  */
 
-function HeaderActionAccount({ dark }: { dark: Darkmode }) {
+function HeaderActionAccount({ dark }: { dark: boolean }) {
   return (
     <div className="flex items-center gap-1">
       {dark ? (
@@ -103,7 +103,7 @@ function HeaderActionAccount({ dark }: { dark: Darkmode }) {
  * Cart
  */
 
-function HeaderActionCart({ dark }: { dark: Darkmode }) {
+function HeaderActionCart({ dark }: { dark: boolean }) {
   return (
     <div className="flex items-center gap-1">
       {dark ? (

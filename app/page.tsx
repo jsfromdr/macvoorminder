@@ -84,34 +84,34 @@ function FeaturedCategories() {
   return (
     <section className="-mb-36 grid grid-cols-6 gap-4">
       <Category
-        title='Macbook Air 13 "'
+        title='Macbook Air 13 &quot;'
         src="https://cdn.shopify.com/s/files/1/0878/4684/6800/files/macbook-air-13-midnight-2022-1_2x-1_jpg.webp?v=1739989640"
         alt="Photo of Macbook Air 13'"
       />
       <Category
-        title='Macbook Air 15 "'
+        title='Macbook Air 15 &quot;'
         src="https://cdn.shopify.com/s/files/1/0878/4684/6800/files/macbook-air-15-inch-front-2023-silver_jpg.webp?v=1739990732"
         alt="Photo of Macbook Air 15'"
       />
       <Category
-        title='Macbook Pro 14 "'
+        title='Macbook Pro 14 &quot;'
         src="https://cdn.shopify.com/s/files/1/0878/4684/6800/files/macbook-pro-14-inch-open-2021-silver-1_jpg.webp?v=1739990974"
         alt="Photo of Macbook Pro 14'"
       />
       <Category
-        title='Macbook Pro 16 "'
+        title='Macbook Pro 16 &quot;'
         src="https://cdn.shopify.com/s/files/1/0878/4684/6800/files/macbook-pro-16-inch-open-2023-space-black_jpg.webp?v=1739990994"
         alt="Photo of Macbook Pro 16'"
       />
       <Category
         title="Mac Studio"
         src="https://cdn.shopify.com/s/files/1/0878/4684/6800/files/mac-studio-top_2x_jpg.webp?v=1739991275"
-        alt="Photo of Mac Studio'"
+        alt="Photo of Mac Studio"
       />
       <Category
         title="iPad Pro"
         src="https://cdn.shopify.com/s/files/1/0878/4684/6800/files/iPad-Pro-11-inch-M4-2024-Space-Black_jpg.webp?v=1739991293"
-        alt="Photo of iPad Pro'"
+        alt="Photo of iPad Pro"
       />
     </section>
   );
