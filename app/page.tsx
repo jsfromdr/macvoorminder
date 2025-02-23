@@ -1,101 +1,240 @@
+// app/page.tsx
+
+import Slogan from "@/components/home/Slogan";
+import { CheckCircleIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
+import ProductListing from "@/components/product/ProductListing";
+import Benefits from "@/components/home/Benefits";
+import Information from "@/components/home/Information";
+import Footer from "@/components/layout/footer/Footer";
+import Subfooter from "@/components/layout/footer/Subfooter";
+import Copyright from "@/components/layout/footer/Copyright";
 
-export default function Home() {
+export default async function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <main>
+      <Hero />
+      <Slogan />
+      <Products />
+      <Benefits />
+      <Information />
+      <Footer />
+      <Subfooter />
+      <Copyright />
+    </main>
+  );
+}
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+function Hero() {
+  return (
+    <section className="flex items-center justify-between bg-gradient-to-b from-sky-950 to-black p-4 pt-36">
+      <div className="flex flex-col gap-24">
+        <div className="flex w-full items-center justify-between">
+          <h1>
+            De nieuwste tweedehands Mac modellen voor de <br /> beste prijs.
+          </h1>
+          <Checklist />
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        <FeaturedCategories />
+      </div>
+    </section>
+  );
+}
+
+function Checklist() {
+  return (
+    <ul className="space-y-2">
+      <li className="flex items-center gap-2">
+        <CheckCircleIcon className="h-6 text-green-500" />
+        <span className="text-white">
+          Altijd <strong>5 sterren</strong> conditie: als nieuw
+        </span>
+      </li>
+      <li className="flex items-center gap-2">
+        <CheckCircleIcon className="h-6 text-green-500" />
+        <span className="text-white">
+          Meest <strong>diverse</strong> aanbod: voor de student én de
+          professional
+        </span>
+      </li>
+      <li className="flex items-center gap-2">
+        <CheckCircleIcon className="h-6 text-green-500" />
+        <span className="text-white">
+          <strong>Direct</strong> uit <strong>voorraad</strong> leverbaar
+        </span>
+      </li>
+      <li className="flex items-center gap-2">
+        <CheckCircleIcon className="h-6 text-green-500" />
+        <span className="text-white">
+          Minimaal <strong>24 maanden</strong> garantie
+        </span>
+      </li>
+      <li className="flex items-center gap-2">
+        <CheckCircleIcon className="h-6 text-green-500" />
+        <span className="text-white">
+          Onze klanten beoordelen ons met <strong>Uitstekend</strong> op
+          Trustpilot
+        </span>
+      </li>
+    </ul>
+  );
+}
+
+function FeaturedCategories() {
+  return (
+    <section className="-mb-36 grid grid-cols-6 gap-4">
+      <Category
+        title='Macbook Air 13 "'
+        src="https://cdn.shopify.com/s/files/1/0878/4684/6800/files/macbook-air-13-midnight-2022-1_2x-1_jpg.webp?v=1739989640"
+        alt="Photo of Macbook Air 13'"
+      />
+      <Category
+        title='Macbook Air 15 "'
+        src="https://cdn.shopify.com/s/files/1/0878/4684/6800/files/macbook-air-15-inch-front-2023-silver_jpg.webp?v=1739990732"
+        alt="Photo of Macbook Air 15'"
+      />
+      <Category
+        title='Macbook Pro 14 "'
+        src="https://cdn.shopify.com/s/files/1/0878/4684/6800/files/macbook-pro-14-inch-open-2021-silver-1_jpg.webp?v=1739990974"
+        alt="Photo of Macbook Pro 14'"
+      />
+      <Category
+        title='Macbook Pro 16 "'
+        src="https://cdn.shopify.com/s/files/1/0878/4684/6800/files/macbook-pro-16-inch-open-2023-space-black_jpg.webp?v=1739990994"
+        alt="Photo of Macbook Pro 16'"
+      />
+      <Category
+        title="Mac Studio"
+        src="https://cdn.shopify.com/s/files/1/0878/4684/6800/files/mac-studio-top_2x_jpg.webp?v=1739991275"
+        alt="Photo of Mac Studio'"
+      />
+      <Category
+        title="iPad Pro"
+        src="https://cdn.shopify.com/s/files/1/0878/4684/6800/files/iPad-Pro-11-inch-M4-2024-Space-Black_jpg.webp?v=1739991293"
+        alt="Photo of iPad Pro'"
+      />
+    </section>
+  );
+}
+
+function Category({
+  src,
+  title,
+  alt,
+}: {
+  src: string;
+  title: string;
+  alt: string;
+}) {
+  return (
+    <div className="flex cursor-pointer flex-col items-center justify-center gap-4 rounded-lg border border-gray-300 bg-white p-8 text-center transition-all duration-300 hover:translate-y-[-10px]">
+      <Image src={src} alt={alt} width={200} height={200} quality={1} />
+      <h5 className="font-semibold text-gray-800">{title}</h5>
     </div>
+  );
+}
+
+function Products() {
+  return (
+    <section className="flex flex-col items-center justify-center gap-14">
+      <h2 className="text-3xl font-bold text-black">Altijd scherp geprijsd</h2>
+      <div className="grid grid-cols-4 gap-x-8 gap-y-24 p-4">
+        <ProductListing
+          productImage="https://cdn.shopify.com/s/files/1/0878/4684/6800/files/macbook-air-13-midnight-2022-1_2x-1_jpg.webp?v=1739989640"
+          productTitle="MacBook Air 15 inch M2 8GB 256GB SSD"
+          price={1049}
+          discount={34}
+          discountedPrice={979}
+          cpu="M2"
+          gpu="M2 Pro"
+          modelYear={2020}
+          color="Black"
+        />
+        <ProductListing
+          productImage="https://cdn.shopify.com/s/files/1/0878/4684/6800/files/macbook-air-15-inch-front-2023-silver_jpg.webp?v=1739990732"
+          productTitle="MacBook Air 15 inch M2 8GB 256GB SSD"
+          price={1049}
+          discount={34}
+          discountedPrice={979}
+          cpu="M2"
+          gpu="M2 Pro"
+          modelYear={2020}
+          color="Black"
+        />
+        <ProductListing
+          productImage="https://cdn.shopify.com/s/files/1/0878/4684/6800/files/macbook-air-13-midnight-2022-1_2x-1_jpg.webp?v=1739989640"
+          productTitle="
+MacBook Air 13 inch M3 16GB 512GB SSD"
+          price={1049}
+          discount={34}
+          discountedPrice={979}
+          cpu="M2"
+          gpu="M2 Pro"
+          modelYear={2020}
+          color="Black"
+        />
+        <ProductListing
+          productImage="https://cdn.shopify.com/s/files/1/0878/4684/6800/files/macbook-air-13-midnight-2022-1_2x-1_jpg.webp?v=1739989640"
+          productTitle="
+MacBook Air 13 inch M3 16GB 512GB SSD"
+          price={1049}
+          discount={34}
+          discountedPrice={979}
+          cpu="M2"
+          gpu="M2 Pro"
+          modelYear={2020}
+          color="Black"
+        />
+        <ProductListing
+          productImage="https://cdn.shopify.com/s/files/1/0878/4684/6800/files/macbook-air-13-midnight-2022-1_2x-1_jpg.webp?v=1739989640"
+          productTitle="MacBook Air 15 inch M2 8GB 256GB SSD "
+          price={1049}
+          discount={34}
+          discountedPrice={979}
+          cpu="M2"
+          gpu="M2 Pro"
+          modelYear={2020}
+          color="Black"
+        />
+        <ProductListing
+          productImage="https://cdn.shopify.com/s/files/1/0878/4684/6800/files/macbook-air-15-inch-front-2023-silver_jpg.webp?v=1739990732"
+          productTitle="MacBook Air 15 inch M2 8GB 256GB SSD "
+          price={1049}
+          discount={34}
+          discountedPrice={979}
+          cpu="M2"
+          gpu="M2 Pro"
+          modelYear={2020}
+          color="Black"
+        />
+        <ProductListing
+          productImage="https://cdn.shopify.com/s/files/1/0878/4684/6800/files/macbook-air-13-midnight-2022-1_2x-1_jpg.webp?v=1739989640"
+          productTitle="
+MacBook Air 13 inch M3 16GB 512GB SSD"
+          price={1049}
+          discount={34}
+          discountedPrice={979}
+          cpu="M2"
+          gpu="M2 Pro"
+          modelYear={2020}
+          color="Black"
+        />
+        <ProductListing
+          productImage="https://cdn.shopify.com/s/files/1/0878/4684/6800/files/macbook-air-13-midnight-2022-1_2x-1_jpg.webp?v=1739989640"
+          productTitle="
+MacBook Air 13 inch M3 16GB 512GB SSD"
+          price={1049}
+          discount={34}
+          discountedPrice={979}
+          cpu="M2"
+          gpu="M2 Pro"
+          modelYear={2020}
+          color="Black"
+        />
+      </div>
+      <button className="rounded-md bg-slate-800 px-6 py-4 text-lg font-medium text-white transition-all duration-300 hover:translate-y-[-5px]">
+        Bekijk ons aanbod
+      </button>
+    </section>
   );
 }
