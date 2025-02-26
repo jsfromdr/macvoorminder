@@ -9,13 +9,15 @@ import Information from "@/components/home/Information";
 import Footer from "@/components/layout/footer/Footer";
 import Subfooter from "@/components/layout/footer/Subfooter";
 import Copyright from "@/components/layout/footer/Copyright";
+import { GetAanbiedingen } from "@/lib/queries/getAanbiedingen";
 
 export default async function Home() {
+  const aanbiedingen = await GetAanbiedingen();
   return (
     <main>
       <Hero />
       <Slogan />
-      <Products />
+      <Products products={aanbiedingen} />
       <Benefits />
       <Information />
       <Footer />
@@ -84,22 +86,22 @@ function FeaturedCategories() {
   return (
     <section className="-mb-36 grid grid-cols-6 gap-4">
       <Category
-        title='Macbook Air 13 &quot;'
+        title='Macbook Air 13 "'
         src="https://cdn.shopify.com/s/files/1/0878/4684/6800/files/macbook-air-13-midnight-2022-1_2x-1_jpg.webp?v=1739989640"
         alt="Photo of Macbook Air 13'"
       />
       <Category
-        title='Macbook Air 15 &quot;'
+        title='Macbook Air 15 "'
         src="https://cdn.shopify.com/s/files/1/0878/4684/6800/files/macbook-air-15-inch-front-2023-silver_jpg.webp?v=1739990732"
         alt="Photo of Macbook Air 15'"
       />
       <Category
-        title='Macbook Pro 14 &quot;'
+        title='Macbook Pro 14 "'
         src="https://cdn.shopify.com/s/files/1/0878/4684/6800/files/macbook-pro-14-inch-open-2021-silver-1_jpg.webp?v=1739990974"
         alt="Photo of Macbook Pro 14'"
       />
       <Category
-        title='Macbook Pro 16 &quot;'
+        title='Macbook Pro 16 "'
         src="https://cdn.shopify.com/s/files/1/0878/4684/6800/files/macbook-pro-16-inch-open-2023-space-black_jpg.webp?v=1739990994"
         alt="Photo of Macbook Pro 16'"
       />
@@ -134,103 +136,25 @@ function Category({
   );
 }
 
-function Products() {
+function Products({ products }) {
   return (
     <section className="flex flex-col items-center justify-center gap-14">
       <h2 className="text-3xl font-bold text-black">Altijd scherp geprijsd</h2>
       <div className="grid grid-cols-4 gap-x-8 gap-y-24 p-4">
-        <ProductListing
-          productImage="https://cdn.shopify.com/s/files/1/0878/4684/6800/files/macbook-air-13-midnight-2022-1_2x-1_jpg.webp?v=1739989640"
-          productTitle="MacBook Air 15 inch M2 8GB 256GB SSD"
-          price={1049}
-          discount={34}
-          discountedPrice={979}
-          cpu="M2"
-          gpu="M2 Pro"
-          modelYear={2020}
-          color="Black"
-        />
-        <ProductListing
-          productImage="https://cdn.shopify.com/s/files/1/0878/4684/6800/files/macbook-air-15-inch-front-2023-silver_jpg.webp?v=1739990732"
-          productTitle="MacBook Air 15 inch M2 8GB 256GB SSD"
-          price={1049}
-          discount={34}
-          discountedPrice={979}
-          cpu="M2"
-          gpu="M2 Pro"
-          modelYear={2020}
-          color="Black"
-        />
-        <ProductListing
-          productImage="https://cdn.shopify.com/s/files/1/0878/4684/6800/files/macbook-air-13-midnight-2022-1_2x-1_jpg.webp?v=1739989640"
-          productTitle="
-MacBook Air 13 inch M3 16GB 512GB SSD"
-          price={1049}
-          discount={34}
-          discountedPrice={979}
-          cpu="M2"
-          gpu="M2 Pro"
-          modelYear={2020}
-          color="Black"
-        />
-        <ProductListing
-          productImage="https://cdn.shopify.com/s/files/1/0878/4684/6800/files/macbook-air-13-midnight-2022-1_2x-1_jpg.webp?v=1739989640"
-          productTitle="
-MacBook Air 13 inch M3 16GB 512GB SSD"
-          price={1049}
-          discount={34}
-          discountedPrice={979}
-          cpu="M2"
-          gpu="M2 Pro"
-          modelYear={2020}
-          color="Black"
-        />
-        <ProductListing
-          productImage="https://cdn.shopify.com/s/files/1/0878/4684/6800/files/macbook-air-13-midnight-2022-1_2x-1_jpg.webp?v=1739989640"
-          productTitle="MacBook Air 15 inch M2 8GB 256GB SSD "
-          price={1049}
-          discount={34}
-          discountedPrice={979}
-          cpu="M2"
-          gpu="M2 Pro"
-          modelYear={2020}
-          color="Black"
-        />
-        <ProductListing
-          productImage="https://cdn.shopify.com/s/files/1/0878/4684/6800/files/macbook-air-15-inch-front-2023-silver_jpg.webp?v=1739990732"
-          productTitle="MacBook Air 15 inch M2 8GB 256GB SSD "
-          price={1049}
-          discount={34}
-          discountedPrice={979}
-          cpu="M2"
-          gpu="M2 Pro"
-          modelYear={2020}
-          color="Black"
-        />
-        <ProductListing
-          productImage="https://cdn.shopify.com/s/files/1/0878/4684/6800/files/macbook-air-13-midnight-2022-1_2x-1_jpg.webp?v=1739989640"
-          productTitle="
-MacBook Air 13 inch M3 16GB 512GB SSD"
-          price={1049}
-          discount={34}
-          discountedPrice={979}
-          cpu="M2"
-          gpu="M2 Pro"
-          modelYear={2020}
-          color="Black"
-        />
-        <ProductListing
-          productImage="https://cdn.shopify.com/s/files/1/0878/4684/6800/files/macbook-air-13-midnight-2022-1_2x-1_jpg.webp?v=1739989640"
-          productTitle="
-MacBook Air 13 inch M3 16GB 512GB SSD"
-          price={1049}
-          discount={34}
-          discountedPrice={979}
-          cpu="M2"
-          gpu="M2 Pro"
-          modelYear={2020}
-          color="Black"
-        />
+        {products.edges.map((product) => (
+          <ProductListing
+            productImage={product.src}
+            productTitle={product.title}
+            price={product.price.amount}
+            discount={34}
+            discountedPrice={979}
+            cpu="M2"
+            gpu="M2 Pro"
+            modelYear={2020}
+            color="Black"
+            key={`${crypto.randomUUID}`}
+          />
+        ))}
       </div>
       <button className="rounded-md bg-slate-800 px-6 py-4 text-lg font-medium text-white transition-all duration-300 hover:translate-y-[-5px]">
         Bekijk ons aanbod
