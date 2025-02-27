@@ -11,6 +11,10 @@ import Copyright from "@/components/layout/footer/Copyright";
 import { GetAanbiedingen } from "@/lib/queries/getAanbiedingen";
 import { ProductType } from "@/lib/types";
 
+export const metadata = {
+  title: "Macvoorminder",
+};
+
 export default async function Home() {
   const aanbiedingenData = await GetAanbiedingen();
   const aanbiedingen = aanbiedingenData.collection.products.edges;

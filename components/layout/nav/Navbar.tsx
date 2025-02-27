@@ -36,25 +36,28 @@ export default async function Navbar({ dark }: { dark: boolean }) {
 function HeaderMenuWhite() {
   return (
     <ul className="relative flex items-center gap-8">
-{menu.items.map((node: NavbarLink) => (
-  <li
-    key={node.key}
-    className="group relative h-fit w-fit cursor-pointer border-t-[6px] border-t-transparent py-6 font-medium text-white transition-all duration-300 hover:-translate-y-[2px] hover:border-t-green-600"
-  >
-    <Link href={node.url}>{node.title}</Link>
-    {node.items && node.items.length > 0 && (
-      <ul className="absolute left-0 top-14 mt-2 hidden h-fit w-fit translate-y-2 transform flex-col overflow-hidden rounded bg-white text-black shadow-md transition-all duration-150 group-hover:flex">
-        {node.items.map((child: NavbarLink) => (
-          <li key={child.id} className="p-4 hover:bg-gray-100">
-            <Link className="text-nowrap" href={child.url}>
-              {child.title}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    )}
-  </li>
-))}
+      {menu.items.map((node: NavbarLink, index: number) => (
+        <li
+          key={node.id ? node.id : `menu-item-${index}`}
+          className="group relative h-fit w-fit cursor-pointer border-t-[6px] border-t-transparent py-6 font-medium text-white transition-all duration-300 hover:-translate-y-[2px] hover:border-t-green-600"
+        >
+          <Link href={node.url}>{node.title}</Link>
+          {node.items && node.items.length > 0 && (
+            <ul className="absolute left-0 top-14 mt-2 hidden h-fit w-fit translate-y-2 transform flex-col overflow-hidden rounded bg-white text-black shadow-md transition-all duration-150 group-hover:flex">
+              {node.items.map((child: NavbarLink, childIndex: number) => (
+                <li
+                  key={child.id ? child.id : `child-${childIndex}`}
+                  className="p-4 hover:bg-gray-100"
+                >
+                  <Link className="text-nowrap" href={child.url}>
+                    {child.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          )}
+        </li>
+      ))}
     </ul>
   );
 }
