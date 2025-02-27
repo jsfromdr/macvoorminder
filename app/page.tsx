@@ -9,6 +9,7 @@ import Subfooter from "@/components/layout/footer/Subfooter";
 import Copyright from "@/components/layout/footer/Copyright";
 
 import { GetAanbiedingen } from "@/lib/queries/getAanbiedingen";
+import { ProductType } from "@/lib/types";
 
 export default async function Home() {
   const aanbiedingenData = await GetAanbiedingen();
@@ -136,20 +137,20 @@ function Category({
   );
 }
 
-function Products({ products }) {
+function Products({ products }: { products: { node: ProductType }[] }) {
   return (
     <section className="flex flex-col items-center justify-center gap-14">
       <h2 className="text-3xl font-bold text-black">Altijd scherp geprijsd</h2>
       <div className="grid grid-cols-4 gap-x-8 gap-y-24 p-4">
-        {products.map((product) => {
+        {products.map((productEdge) => {
+          const product = productEdge.node;
+
           return (
             <ProductListing
               key={crypto.randomUUID()}
-              productImage={product.node.images.edges[0].node.url}
-              productTitle={product.node.title}
-              price={
-                product.variants?.edges?.[0]?.node?.price?.amount || "0.00"
-              }
+              productImage={product.images.edges[0]?.node?.url}
+              productTitle={product.title}
+              price={Number(product.variants.edges[0]?.node?.price?.amount)}
               discount={34}
               discountedPrice={979}
               cpu="M2"
