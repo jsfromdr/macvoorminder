@@ -1,5 +1,3 @@
-// app/page.tsx
-
 import Slogan from "@/components/home/Slogan";
 import { CheckCircleIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
@@ -9,10 +7,12 @@ import Information from "@/components/home/Information";
 import Footer from "@/components/layout/footer/Footer";
 import Subfooter from "@/components/layout/footer/Subfooter";
 import Copyright from "@/components/layout/footer/Copyright";
+
 import { GetAanbiedingen } from "@/lib/queries/getAanbiedingen";
 
 export default async function Home() {
-  const aanbiedingen = await GetAanbiedingen();
+  const aanbiedingenData = await GetAanbiedingen();
+  const aanbiedingen = aanbiedingenData.collection.products.edges;
   return (
     <main>
       <Hero />
@@ -141,20 +141,24 @@ function Products({ products }) {
     <section className="flex flex-col items-center justify-center gap-14">
       <h2 className="text-3xl font-bold text-black">Altijd scherp geprijsd</h2>
       <div className="grid grid-cols-4 gap-x-8 gap-y-24 p-4">
-        {products.edges.map((product) => (
-          <ProductListing
-            productImage={product.src}
-            productTitle={product.title}
-            price={product.price.amount}
-            discount={34}
-            discountedPrice={979}
-            cpu="M2"
-            gpu="M2 Pro"
-            modelYear={2020}
-            color="Black"
-            key={`${crypto.randomUUID}`}
-          />
-        ))}
+        {products.map((product) => {
+          return (
+            <ProductListing
+              key={crypto.randomUUID()}
+              productImage={product.node.images.edges[0].node.url}
+              productTitle={product.node.title}
+              price={
+                product.variants?.edges?.[0]?.node?.price?.amount || "0.00"
+              }
+              discount={34}
+              discountedPrice={979}
+              cpu="M2"
+              gpu="M2 Pro"
+              modelYear={2020}
+              color="Black"
+            />
+          );
+        })}
       </div>
       <button className="rounded-md bg-slate-800 px-6 py-4 text-lg font-medium text-white transition-all duration-300 hover:translate-y-[-5px]">
         Bekijk ons aanbod

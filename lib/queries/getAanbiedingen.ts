@@ -13,17 +13,6 @@ query MyQuery {
       edges {
         node {
           id
-          images(first: 10) {
-            edges {
-              node {
-                id
-                altText
-                src
-                width
-                height
-              }
-            }
-          }
           title
           variants(first: 10) {
             edges {
@@ -58,6 +47,18 @@ query MyQuery {
                     }
                   }
                 }
+              }
+            }
+          }
+          images(first: 1) {
+            edges {
+              node {
+                id
+                altText
+                url
+                width
+                height
+                src
               }
             }
           }

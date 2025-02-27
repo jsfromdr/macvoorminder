@@ -18,7 +18,7 @@ const ProductListing: React.FC<ProductProps> = ({
       <div className="relative">
         <Image
           src={productImage}
-          alt={productTitle}
+          alt={`Image of ${productTitle}`}
           className="mb-4 h-48 w-full object-contain"
           width={300}
           height={300}
@@ -53,12 +53,10 @@ const ProductListing: React.FC<ProductProps> = ({
         </div>
         <div className="flex items-center justify-between">
           <div className="flex flex-col gap-1">
-            <span className="text-xs text-slate-500 line-through">
-              {price.toFixed(2)}
-            </span>
+            <span className="text-xs text-slate-500 line-through">{price}</span>
             <div className="flex items-center gap-1">
               <span className="text-xl font-bold text-slate-900">
-                {discountedPrice.toFixed(2)}
+                {discountedPrice}
               </span>
               <span className="text-xs text-slate-500">incl. btw</span>
             </div>
